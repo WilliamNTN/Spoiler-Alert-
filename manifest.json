@@ -1,0 +1,33 @@
+{
+	"name":"Spoiler Alert!",
+	"version":"1.0",
+	"description":"Block spoilers at twitter",
+	"manifest_version":2,
+
+
+	"background":{
+		"scripts":["background.js"],
+		"persistent":false
+	},
+
+
+	"page_action":{
+		"default_popup":"main.html"
+	},
+
+	"content_scripts": [
+   	{
+     "matches": ["http://www.twitter.com/*", "https://twitter.com/*"],
+     "js": ["jquery.js", "content.js"],
+     "run_at": "document_end"
+   	}
+	],
+
+	"permissions":[
+		"storage",
+		"declarativeContent",
+		"http://twitter.com/",
+		"https://twitter.com/",
+		"tabs", "activeTab"
+	]
+}
